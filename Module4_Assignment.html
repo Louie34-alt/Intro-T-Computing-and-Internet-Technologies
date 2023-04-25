@@ -17,14 +17,22 @@
               c = document.forms["input_form"]["textboxC"].value;
 
               // validate a, b, c
-              if (a == 0) {
-                outputText = "<em>a</em> cannot equal zero";
+              if (a == 0 || a < -99 || a > 99) {
+                outputText = "<em>a</em> has to be between -99 and +99";
               }
-              else{
-                document.getElementById("output_text").innerHTML = outputText;
+              else if (b < -99 || b > 99) {
+                outputText = "<em>b</em> has to be between -99 and +99";
+              }
+              else if (c < -99 || c > 99) {
+                outputText = "<em>c</em> has to be between -99 and +99";
+              }
+              else {
+                var x1 = (-b - Math.sqrt(Math.pow(b, 2) - 4 * a * c)) / (2 * a);
+                outputText = x1;
               }
               // calculate the result using x= (-b +- sqrt (b^2 - 4ac)) / 2a
               // output the result
+              document.getElementById("output_text").innerHTML = outputText;
 
             }
             
